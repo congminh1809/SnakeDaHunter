@@ -1,0 +1,5 @@
+﻿  SnakeDaHunter.cpp
+D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\SnakeDaHunter.cpp(30,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\SnakeDaHunter.cpp(36,27): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\SnakeDaHunter.cpp(36,21): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  SnakeDaHunter.vcxproj -> D:\Học\Thực tập\SnakeDaHunter\Debug\SnakeDaHunter.exe
