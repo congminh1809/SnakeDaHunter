@@ -3,6 +3,7 @@
 #include <cmath>
 #include <ctime>
 #include <cstdlib>
+#include <iostream>
 
 int main()
 {
@@ -15,12 +16,13 @@ int main()
     sf::RectangleShape head(sf::Vector2f(20.f, 20.f));
     head.setFillColor(sf::Color(0, 255, 119, 255));
     head.setOrigin(-300, -300);
+    sf::Vector2f HeadPosition = head.getPosition();
 
     //snake body
     sf::RectangleShape body(sf::Vector2f(20.f, 20.f));
     body.setFillColor(sf::Color(0, 181, 84, 255));
     body.setOrigin(-320, -300);
-
+    
     //snake tail
     sf::RectangleShape tail(sf::Vector2f(20.f, 20.f));
     tail.setFillColor(sf::Color(0, 128, 60, 255));
@@ -55,13 +57,6 @@ int main()
     BottomB.setOrigin(-30, -570);
 
 
-    
-
-
-
-
-
-    //sf::Vector2f increment(0.1f, 0.1f);
 
     // event handling loop
     while (window.isOpen()) {
