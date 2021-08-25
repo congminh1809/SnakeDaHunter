@@ -1,23 +1,38 @@
-#include <SFML/Window.hpp>
-#include <SFML/Graphics.hpp>
+#include "world.h"
 
-
-int main()
+World::World(const int sz, const sf::Vector2u worldSize)
+  : segmentSize_{ sz }
+  , worldSize_{ worldSize }
 {
-    sf::Window window(sf::VideoMode(800, 600), "My window");
+  // initialize apple
+  apple_.setFillColor(sf::Color::Green);
+  apple_.setRadius(segmentSize_ / 2.0);
 
-    // run the program as long as the window is open
-    while (window.isOpen())
-    {
-        // check all the window's events that were triggered since the last iteration of the loop
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            // "close requested" event: we close the window
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
+  initializeWalls();
+}
+
+void World::draw(sf::RenderWindow& r)
+{
+  for ( int i = 0; i < 4; ++i ) {
+    r.draw(walls_[i]);
+  }
+}
+
+void World::initializeWalls()
+{
+  for ( int i = 0; i < 4; ++i ) {
+    walls_[i].setFillColor(sf::Color::Red);
+    if ( (i + 1) % 2 == 0 ) {
+      walls_[i].setSize(sf::Vector2f(worldSize_.x * segmentSize_, segmentSize_));
+    } else {
+      walls_[i].setSize(sf::Vector2f(segmentSize_, worldSize_.y * segmentSize_));
     }
 
-    return 0;
+    if ( i < 2 ) {
+      walls_[i].setPosition(0, 0);
+    } else {
+      walls_[i].setOrigin(walls_[i].getSize());
+      walls_[i].setPosition(sf::Vector2f(worldSize_.x * segmentSize_, worldSize_.y * segmentSize_));
+    }
+  }
 }
