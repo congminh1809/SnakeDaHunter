@@ -7,7 +7,10 @@ class Game
 {
 public:
   Game();
+  ~Game();
 
+  void checkEvents();
+  void checkInput();
   void update();
   void draw();
   bool isDone() const { return isDone_; }

@@ -27,3 +27,21 @@ void Snake::draw(sf::RenderWindow& r)
     r.draw(bodySegment_);
   }
 }
+
+/** Update the state of the snake.
+ */
+void Snake::update()
+{
+  if ( body_.empty() || dir_ == Direction::None ) return;
+
+  move();
+}
+
+/** Move the snake to the current direction.
+ */
+void Snake::move()
+{
+  // DAY 2: Write code to change the positions of snake body's segment following the current
+  // value of dir_
+	
+}
