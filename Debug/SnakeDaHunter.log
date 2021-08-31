@@ -1,2 +1,52 @@
-﻿  game.cpp
+﻿  world.cpp
+D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\world.cpp(10,13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\world.cpp(40,39): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\world.cpp(62,35): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\world.cpp(62,30): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\world.cpp(71,67): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\world.cpp(71,51): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\world.cpp(73,65): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\world.cpp(73,38): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\world.cpp(80,84): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\world.cpp(80,55): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
   SnakeDaHunter.vcxproj -> D:\Học\Thực tập\SnakeDaHunter\Debug\SnakeDaHunter.exe

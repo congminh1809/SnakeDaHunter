@@ -25,12 +25,18 @@ enum class Direction
 class Snake
 {
 public:
-  Snake(const int segmentSize);
+    Snake(const int segmentSize);
 
-  void draw(sf::RenderWindow&);
-  void update();
-  Direction direction() const { return dir_; }
-  void direction(const Direction d) { dir_ = d; }
+    void draw(sf::RenderWindow&);
+    void update();
+
+    //getter/setter
+    Direction direction() const { return dir_; }      //getter
+    void direction(const Direction d) { dir_ = d; }   //setter
+    const SnakeBody& body() const { return body_; }   //getter
+
+    /*int segmentSize() const { return segmentSize_; }
+    void segmentSize(int sz) { segmentSize_ = sz; }*/
 
 private:
   SnakeBody body_;
@@ -38,5 +44,6 @@ private:
   sf::RectangleShape bodySegment_;  // shape used in rendering
   Direction dir_;
 
+  void initialize();
   void move();
 };

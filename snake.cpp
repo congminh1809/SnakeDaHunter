@@ -37,11 +37,40 @@ void Snake::update()
   move();
 }
 
+void Snake::initialize() {
+
+	body_.clear();
+	body_.emplace_back(5, 7);
+	body_.emplace_back(5, 6);
+	body_.emplace_back(5, 5);
+
+	dir_ = Direction::None;
+}
+
 /** Move the snake to the current direction.
  */
 void Snake::move()
 {
   // DAY 2: Write code to change the positions of snake body's segment following the current
   // value of dir_
-	
+	for (std::size_t i = body_.size() - 1; i > 0; --i)
+	{
+		body_[i].position = body_[i - 1].position;
+	}
+	if (dir_ == Direction::Up)
+	{
+		--body_[0].position.y;
+	}
+	else if (dir_ == Direction::Right)
+	{
+		++body_[0].position.x;
+	}
+	else if (dir_ == Direction::Down)
+	{
+		++body_[0].position.y;
+	}
+	else if (dir_ == Direction::Left)
+	{
+		--body_[0].position.x;
+	}
 }

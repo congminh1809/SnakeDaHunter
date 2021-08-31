@@ -9,9 +9,7 @@ public:
 
   void draw(sf::RenderWindow&);
   void update();
-  int Ver = rand() % (800 - 60 + 1) + 0;
-  int Hor = rand() % (600 - 60 + 1) + 0;
-
+  
 private:
   int segmentSize_;
   sf::Vector2u worldSize_;

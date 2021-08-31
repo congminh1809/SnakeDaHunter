@@ -18,6 +18,7 @@ Game::Game()
   renderWindow_.create(sf::VideoMode{ SEGMENTS_X * SEGMENT_SIZE, SEGMENTS_Y * SEGMENT_SIZE },
                        WINDOW_TITLE,
                        sf::Style::Default);
+  renderWindow_.setFramerateLimit(60);
 }
 
 /** Destructor: close the render window
@@ -46,16 +47,24 @@ void Game::checkInput()
   // If yes then set the direction of the snake by using Snake::direction(Direction)
   // Remember to check if we can set the new direction. For example, if the current direction is
   // Left then we cannot set the new direction to Right because the head will go back to the body.
-	Direction dir_;
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-		dir_ = Direction::Up;
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-		dir_ = Direction::Down;
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-		dir_ = Direction::Left;
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-		dir_ = Direction::Right;
+	//Direction dir_;
 
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && snake_.direction() != Direction::Down)
+		snake_.direction(Direction::Up);
+
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && snake_.direction() != Direction::Up)
+		snake_.direction(Direction::Down);
+
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && snake_.direction() != Direction::Right)
+		snake_.direction(Direction::Left);
+
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && snake_.direction() != Direction::Left)
+		snake_.direction(Direction::Right);
+
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) 
+		isDone_ = true;
+	
 }
 
 /** Update the states of game after checking events and input
