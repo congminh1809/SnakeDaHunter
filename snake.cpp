@@ -50,9 +50,9 @@ int Snake::lives_() {
 	return live;
 }
 
-bool Snake::isDead_() {
-
-}
+//bool Snake::isDead_() {
+//
+//}
 
 void Snake::initialize() {
 
