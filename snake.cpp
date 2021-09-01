@@ -37,6 +37,8 @@ void Snake::update()
   move();
 }
 
+
+
 void Snake::initialize() {
 
 	body_.clear();

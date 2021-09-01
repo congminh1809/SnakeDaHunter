@@ -25,6 +25,7 @@ enum class Direction
 class Snake
 {
 public:
+
     Snake(const int segmentSize);
 
     void draw(sf::RenderWindow&);
@@ -44,6 +45,8 @@ private:
   sf::RectangleShape bodySegment_;  // shape used in rendering
   Direction dir_;
 
+  //int lives_();
+  /*bool isDead();*/
   void initialize();
   void move();
 };

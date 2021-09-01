@@ -3,15 +3,20 @@
 #include <iostream>
 
 
-World::World(const int sz, const sf::Vector2u worldSize)
+World::World(const int sz, const sf::Vector2u worldSize/*, const Snake& snake*/)
   : segmentSize_{ sz }
   , worldSize_{ worldSize }
+  /*, snake_{ snake }*/
+
 {
+  // Initialize random generator
   srand(time(NULL));
   initializeApple();
   initializeWalls();
 }
 
+/** Draw the walls and the apple on the render window.
+ */
 void World::draw(sf::RenderWindow& r)
 {
   for ( int i = 0; i < 4; ++i ) {
@@ -29,7 +34,13 @@ void World::update()
   // TODO: implemented as follow
   //   - check if the snake can eat the apple
   //   - check if the snake collides with the walls
-    
+    /*if (apple_.position.x/segmentSize_== .position.x/segmentSize_)
+    {
+        createApple();
+        for (auto it = body_.begin() + 1; it != body_.end(); ++it) {
+            body_.emplace_back(it->position.x * segmentSize_, it->position.y * segmentSize_)
+        }
+    }*/
 }
 
 void World::initializeApple()
@@ -40,6 +51,29 @@ void World::initializeApple()
   apple_.shape.setRadius(segmentSize_ / 2.0);
   
 }
+
+/** Check if a position is occupied by the snake body.
+ *
+ * @param 'pos' The position to be checked.
+ * @param 'body' Body of the snake.
+ *
+ * @return true if the position is occupied by the snake body.
+ *         Otherwise, returns false.
+ */
+static bool isOnSnake(const sf::Vector2i& pos, const SnakeBody& body)
+{
+    for (const auto& c : body) {
+        if (pos == c.position) return true;
+    }
+    return false;
+}
+
+//int lives_(int live=3) {
+//    if (isOnSnake == true)
+//    {
+//        live--;
+//    }
+//}
 
 /** Create an apple at a random position in the world. The position must not be on the walls.
  */
