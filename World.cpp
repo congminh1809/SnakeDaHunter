@@ -4,52 +4,52 @@
 
 
 World::World(const int sz, const sf::Vector2u worldSize/*, const Snake& snake*/)
-  : segmentSize_{ sz }
-  , worldSize_{ worldSize }
-  /*, snake_{ snake }*/
+    : segmentSize_{ sz }
+    , worldSize_{ worldSize }
+    /*, snake_{ snake }*/
 
 {
-  // Initialize random generator
-  srand(time(NULL));
-  initializeApple();
-  initializeWalls();
+    // Initialize random generator
+    srand(time(NULL));
+    initializeApple();
+    initializeWalls();
 }
 
 /** Draw the walls and the apple on the render window.
  */
 void World::draw(sf::RenderWindow& r)
 {
-  for ( int i = 0; i < 4; ++i ) {
-    r.draw(walls_[i]);
-  
-  }
-  r.draw(apple_.shape);
-  
+    for (int i = 0; i < 4; ++i) {
+        r.draw(walls_[i]);
+
+    }
+    r.draw(apple_.shape);
+
 }
 
 /** Update the state of world.
  */
 void World::update()
 {
-  // TODO: implemented as follow
-  //   - check if the snake can eat the apple
-  //   - check if the snake collides with the walls
-    /*if (apple_.position.x/segmentSize_== .position.x/segmentSize_)
-    {
-        createApple();
-        for (auto it = body_.begin() + 1; it != body_.end(); ++it) {
-            body_.emplace_back(it->position.x * segmentSize_, it->position.y * segmentSize_)
-        }
-    }*/
+    // TODO: implemented as follow
+    //   - check if the snake can eat the apple
+    //   - check if the snake collides with the walls
+      /*if (apple_.position.x/segmentSize_== .position.x/segmentSize_)
+      {
+          createApple();
+          for (auto it = body_.begin() + 1; it != body_.end(); ++it) {
+              body_.emplace_back(it->position.x * segmentSize_, it->position.y * segmentSize_)
+          }
+      }*/
 }
 
 void World::initializeApple()
 {
-  createApple();
+    createApple();
 
-  apple_.shape.setFillColor(sf::Color(255, 0, 98, 255));
-  apple_.shape.setRadius(segmentSize_ / 2.0);
-  
+    apple_.shape.setFillColor(sf::Color(255, 0, 98, 255));
+    apple_.shape.setRadius(segmentSize_ / 2.0);
+
 }
 
 /** Check if a position is occupied by the snake body.
@@ -79,14 +79,14 @@ static bool isOnSnake(const sf::Vector2i& pos, const SnakeBody& body)
  */
 void World::createApple()
 {
-  // DAY 2: Create an apple at a random position in the world. The position must not be on the
-  // walls.
-    
-    //sf::CircleShape apple_;
-    //apple_.setOrigin(Ver, Hor);
-    int Ver = rand() % ((worldSize_.x-2) + 1) + 1;
-    int Hor = rand() % ((worldSize_.y-2) + 1) + 1;
-    
+    // DAY 2: Create an apple at a random position in the world. The position must not be on the
+    // walls.
+
+      //sf::CircleShape apple_;
+      //apple_.setOrigin(Ver, Hor);
+    int Ver = rand() % ((worldSize_.x - 2) + 1) + 1;
+    int Hor = rand() % ((worldSize_.y - 2) + 1) + 1;
+
     Ver = Ver * segmentSize_;
     Hor = Hor * segmentSize_;
 
@@ -99,19 +99,21 @@ void World::createApple()
 
 void World::initializeWalls()
 {
-  for ( int i = 0; i < 4; ++i ) {
-    walls_[i].setFillColor(sf::Color(255, 0, 98, 255));
-    if ( (i + 1) % 2 == 0 ) {
-      walls_[i].setSize(sf::Vector2f(worldSize_.x * segmentSize_, segmentSize_));
-    } else {
-      walls_[i].setSize(sf::Vector2f(segmentSize_, worldSize_.y * segmentSize_));
-    }
+    for (int i = 0; i < 4; ++i) {
+        walls_[i].setFillColor(sf::Color(255, 0, 98, 255));
+        if ((i + 1) % 2 == 0) {
+            walls_[i].setSize(sf::Vector2f(worldSize_.x * segmentSize_, segmentSize_));
+        }
+        else {
+            walls_[i].setSize(sf::Vector2f(segmentSize_, worldSize_.y * segmentSize_));
+        }
 
-    if ( i < 2 ) {
-      walls_[i].setPosition(0, 0);
-    } else {
-      walls_[i].setOrigin(walls_[i].getSize());
-      walls_[i].setPosition(sf::Vector2f(worldSize_.x * segmentSize_, worldSize_.y * segmentSize_));
+        if (i < 2) {
+            walls_[i].setPosition(0, 0);
+        }
+        else {
+            walls_[i].setOrigin(walls_[i].getSize());
+            walls_[i].setPosition(sf::Vector2f(worldSize_.x * segmentSize_, worldSize_.y * segmentSize_));
+        }
     }
-  }
 }

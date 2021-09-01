@@ -37,7 +37,22 @@ void Snake::update()
   move();
 }
 
+//Count how many times the snake's head touch snake's body
+int Snake::lives_() {
+	int live = 3;
+	for (auto it = body_.begin() + 1; it != body_.end(); ++it) {
+		if (body_[0].position.x / segmentSize_ == it->position.x / segmentSize_ && 
+			body_[0].position.y / segmentSize_ == it->position.y / segmentSize_)
+		{
+			live--;
+		}
+	}
+	return live;
+}
 
+bool Snake::isDead_() {
+
+}
 
 void Snake::initialize() {
 

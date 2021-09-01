@@ -31,6 +31,9 @@ public:
     void draw(sf::RenderWindow&);
     void update();
 
+    int lives_();
+    bool isDead_();
+
     //getter/setter
     Direction direction() const { return dir_; }      //getter
     void direction(const Direction d) { dir_ = d; }   //setter

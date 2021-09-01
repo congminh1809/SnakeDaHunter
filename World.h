@@ -13,8 +13,7 @@ public:
 
 private:
     int segmentSize_;
-    int lives_();
-    bool isDead();
+    
     sf::Vector2u worldSize_;
     struct Apple
     {

@@ -1,23 +1,14 @@
 ﻿  world.cpp
-D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\world.cpp(13,13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\world.cpp(51,39): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\world.cpp(89,35): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\world.cpp(89,30): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\world.cpp(98,67): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\world.cpp(13,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\world.cpp(51,41): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\world.cpp(96,35): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\world.cpp(96,30): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\world.cpp(105,73): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\world.cpp(98,51): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
-          with
-          [
-              T=unsigned int
-          ]
-          and
-          [
-              T=float
-          ]
-D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\world.cpp(100,65): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\world.cpp(105,57): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
           with
           [
               T=unsigned int
@@ -26,12 +17,7 @@ D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\world.cpp(100,65): warning C42
           [
               T=float
           ]
-D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\world.cpp(100,38): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\world.cpp(107,84): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\world.cpp(108,71): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
           with
           [
               T=unsigned int
@@ -40,7 +26,21 @@ D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\world.cpp(107,84): warning C42
           [
               T=float
           ]
-D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\world.cpp(107,55): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\world.cpp(108,44): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\world.cpp(116,90): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\world.cpp(116,61): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
           with
           [
               T=unsigned int
