@@ -17,8 +17,8 @@ public:
 
 private:
   int segmentSize_;
-  World world_;
   Snake snake_;
+  World world_;
   sf::RenderWindow renderWindow_;
   bool isDone_;
 };
