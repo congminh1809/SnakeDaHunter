@@ -31,9 +31,6 @@ public:
     void draw(sf::RenderWindow&);
     void update();
 
-    int lives_();
-    bool isDead_();
-
     //getter/setter
     Direction direction() const { return dir_; }      //getter
     void direction(const Direction d) { dir_ = d; }   //setter
@@ -41,15 +38,18 @@ public:
 
     /*int segmentSize() const { return segmentSize_; }
     void segmentSize(int sz) { segmentSize_ = sz; }*/
+    bool isDead() const { return isDead_; }     
+    void isDead(const bool d) { isDead_ = d; }
 
 private:
   SnakeBody body_;
   int segmentSize_;
   sf::RectangleShape bodySegment_;  // shape used in rendering
   Direction dir_;
-
-  //int lives_();
-  /*bool isDead();*/
+  int lives_ = 3; // hold lives of snake
+  bool isDead_;   // check if snake is alive
+  
   void initialize();
   void move();
+  void checkHeadCollidesWithBody();
 };

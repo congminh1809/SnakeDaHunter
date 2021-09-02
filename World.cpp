@@ -3,10 +3,10 @@
 #include <iostream>
 
 
-World::World(const int sz, const sf::Vector2u worldSize/*, const Snake& snake*/)
+World::World(const int sz, const sf::Vector2u worldSize, Snake& snake)
     : segmentSize_{ sz }
     , worldSize_{ worldSize }
-    /*, snake_{ snake }*/
+    , snake_{ snake }
 
 {
     // Initialize random generator
@@ -32,15 +32,21 @@ void World::draw(sf::RenderWindow& r)
 void World::update()
 {
     // TODO: implemented as follow
+    auto snakePosition = snake_.body().front().position;
     //   - check if the snake can eat the apple
+    if (apple_.position == snakePosition)
+    {
+        createApple();
+        /*for (auto it = body_.begin() + 1; it != body_.end(); ++it) {
+            body_.emplace_back(it->position.x * segmentSize_, it->position.y * segmentSize_);
+        }*/
+    }
+
     //   - check if the snake collides with the walls
-      /*if (apple_.position.x/segmentSize_== .position.x/segmentSize_)
-      {
-          createApple();
-          for (auto it = body_.begin() + 1; it != body_.end(); ++it) {
-              body_.emplace_back(it->position.x * segmentSize_, it->position.y * segmentSize_)
-          }
-      }*/
+    if (snakePosition.x <= 1 || snakePosition.x >= worldSize_.y -1 || snakePosition.x >= worldSize_.y - 1 || snakePosition.y <= 1)
+    {
+        snake_.isDead(true);
+    }
 }
 
 void World::initializeApple()
@@ -84,17 +90,17 @@ void World::createApple()
 
       //sf::CircleShape apple_;
       //apple_.setOrigin(Ver, Hor);
-    int Ver = rand() % ((worldSize_.x - 2) + 1) + 1;
-    int Hor = rand() % ((worldSize_.y - 2) + 1) + 1;
+    int Ver = rand() % ((worldSize_.x - 2) + 1) + 2;
+    int Hor = rand() % ((worldSize_.y - 2) + 1) + 2;
 
-    Ver = Ver * segmentSize_;
-    Hor = Hor * segmentSize_;
+    //Ver = Ver * segmentSize_;
+    //Hor = Hor * segmentSize_;
 
-    /*apple_.position.x = Ver;
-    apple_.position.y = Hor;*/
+    apple_.position.x = Ver;
+    apple_.position.y = Hor;
 
-    apple_.shape.setPosition(Ver, Hor);
-    std::cout << Ver << std::endl << Hor;
+    apple_.shape.setPosition(Ver * segmentSize_, Hor * segmentSize_);
+    std::cout << Ver * segmentSize_ << "   " << Hor * segmentSize_ << std::endl;
 }
 
 void World::initializeWalls()

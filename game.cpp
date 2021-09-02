@@ -1,4 +1,5 @@
 #include "game.h"
+#include<iostream>
 
 const int SEGMENT_SIZE{ 20 };
 
@@ -11,14 +12,14 @@ const int SEGMENTS_Y{ 30 };
  */
 Game::Game()
   : segmentSize_{ SEGMENT_SIZE }
-  , world_(segmentSize_, sf::Vector2u{ SEGMENTS_X, SEGMENTS_Y })
   , snake_(segmentSize_)
+  , world_(segmentSize_, sf::Vector2u{ SEGMENTS_X, SEGMENTS_Y }, snake_)
   , isDone_{ false }
 {
   renderWindow_.create(sf::VideoMode{ SEGMENTS_X * SEGMENT_SIZE, SEGMENTS_Y * SEGMENT_SIZE },
                        WINDOW_TITLE,
                        sf::Style::Default);
-  renderWindow_.setFramerateLimit(60);
+  renderWindow_.setFramerateLimit(20);
 }
 
 /** Destructor: close the render window
@@ -73,6 +74,12 @@ void Game::update()
 {
   snake_.update();
   world_.update();
+  if (snake_.isDead() )
+  {
+	  isDone_ = true;
+	  std::cout << "GAME OVER";
+  }
+
 }
 
 void Game::draw()
