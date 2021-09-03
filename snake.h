@@ -36,7 +36,6 @@ public:
 
   bool isDead() const { return isDead_; }
   void isDead(const bool d) { isDead_ = d; }
-
   void grow();
 
 private:

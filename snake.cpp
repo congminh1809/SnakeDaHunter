@@ -40,7 +40,9 @@ void Snake::update()
 
 /** Extend the snake's body by one segment
  */
-void Snake::grow() {}
+void Snake::grow() {
+  
+}
 
 void Snake::initialize()
 {

@@ -12,6 +12,7 @@ World::World(const int sz, const sf::Vector2u worldSize, Snake& snake)
   : segmentSize_{ sz }
   , worldSize_{ worldSize }
   , snake_{ snake }
+
 {
   // Initialize random generator
   srand(time(nullptr));
@@ -36,7 +37,7 @@ void World::update()
 {
   // DAY 3: implemented as follow
   auto snakePosition = snake_.body().front().position;
-  int score = 0;
+  
   //   - check if the snake can eat the apple
   if ( snakePosition == apple_.position ) {
     // TODO: extend the snake's body by 1
