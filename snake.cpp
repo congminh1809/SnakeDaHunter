@@ -41,18 +41,39 @@ void Snake::update()
 /** Extend the snake's body by one segment
  */
 void Snake::grow() {
-    /*for (auto it = body_.end() ; it != body_.end() + 1; ++it) {
-        body_.emplace_back(it->position.x, it->position.y);
-        bodySegment_.setFillColor(sf::Color::Green);
-        bodySegment_.setPosition(it->position.x * segmentSize_, it->position.y * segmentSize_);
-    }*/
+    if (body_.size()<2)
+    {
+        return;
+    }
+    const auto& tail1 = body_.at(body_.size() - 1);
+    const auto& tail2 = body_.at(body_.size() - 2);
+
+    if (tail1.position.x == tail2.position.x)
+    {
+        if (tail1.position.y > tail2.position.y) {
+            body_.emplace_back(tail1.position.x, tail1.position.y + 1);
+        }
+        else {
+            body_.emplace_back(tail1.position.x, tail1.position.y - 1);
+        }
+    }
+    else if (tail1.position.y == tail2.position.y)
+    {
+        if (tail1.position.x > tail2.position.x) {
+            body_.emplace_back(tail1.position.x + 1, tail1.position.y);
+        }
+        else {
+            body_.emplace_back(tail1.position.x - 1, tail1.position.y);
+        }
+    }
+    std::cout << "SIZE: " << body_.size() << std::endl;
 }
 
 void Snake::initialize()
 {
     body_.clear();
-    /*body_.emplace_back(5, 21);
-    body_.emplace_back(5, 20);*/
+    body_.emplace_back(5, 21);
+    body_.emplace_back(5, 20);
     body_.emplace_back(5, 19);
     body_.emplace_back(5, 18);
     body_.emplace_back(5, 17);
@@ -116,6 +137,7 @@ void Snake::checkHeadCollidesWithBody()
 		//count++;
 	}
     if (lives_ == 0) isDead_ = true;
+
 
     // another way to implement using std::find_if
     // auto it = std::find_if(body_.begin() + 1, body_.end(), [&](const SnakeSegment& c) {

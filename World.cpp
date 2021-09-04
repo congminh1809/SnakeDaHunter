@@ -42,6 +42,7 @@ void World::update()
   if ( snakePosition == apple_.position ) {
     // TODO: extend the snake's body by 1
     snake_.grow();
+    //score = score + body_.size();
     ++score;
     std::cout << "Score: " << score << std::endl;
     // create another apple
