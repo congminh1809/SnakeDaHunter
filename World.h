@@ -12,6 +12,7 @@ public:
   void draw(sf::RenderWindow&);
   void update();
   int score = 0;
+  
 
 private:
   int segmentSize_;

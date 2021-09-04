@@ -41,6 +41,7 @@ public:
 private:
   SnakeBody body_;
   int segmentSize_;
+  //int length = 1;
   sf::RectangleShape bodySegment_;  // shape used in rendering
   Direction dir_;
 
