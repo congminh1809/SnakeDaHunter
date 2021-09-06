@@ -16,6 +16,8 @@ public:
 private:
   int segmentSize_;
   sf::Vector2i worldSize_;
+  sf::Text text_;
+
   struct Apple
   {
     sf::Vector2i position;
@@ -27,4 +29,5 @@ private:
   void initializeApple();
   void initializeWalls();
   void createApple();
+  void text();
 };

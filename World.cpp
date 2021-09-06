@@ -2,6 +2,8 @@
 #include "snake.h"
 #include <iostream>
 
+using namespace sf;
+
 /** Construct a world containing walls and an apple.
  *
  * The world is a grid of segments and has 4 walls on the boundary and an apple
@@ -26,8 +28,10 @@ void World::draw(sf::RenderWindow& r)
 {
   for ( int i = 0; i < 4; ++i ) {
     r.draw(walls_[i]);
+    r.draw(text_);
   }
   r.draw(apple_.shape);
+  
 }
 
 /** Update the state of world.
@@ -114,3 +118,15 @@ void World::initializeWalls()
     }
   }
 }
+
+void World::text() {
+    //text_.setFont(font);
+    text_.setString("Hello world");
+    text_.setCharacterSize(24);
+    text_.setFillColor(sf::Color(20, 179, 196, 255));
+    text_.setStyle(sf::Text::Bold | sf::Text::Underlined);
+    //text_.setPosition(worldSize_.x * segmentSize_ - segmentSize_, worldSize_.y * segmentSize_ - segmentSize_);
+    text_.setPosition(400, 300);
+}
+
+

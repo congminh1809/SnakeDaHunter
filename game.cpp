@@ -6,7 +6,7 @@ const int SEGMENTS_X{ 40 };
 const int SEGMENTS_Y{ 30 };
 const int SNAKE_LIVES{ 3 };
 
-const std::string WINDOW_TITLE{ "Yet Another Snake Game" };
+const std::string WINDOW_TITLE{ "Snake da Hunter" };
 const int MAX_FPS{ 60 };
 
 /** Constructor: create world, snake and a render window.
