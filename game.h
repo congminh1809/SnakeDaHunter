@@ -14,6 +14,7 @@ public:
   void update();
   void draw();
   bool isDone() const { return isDone_; }
+  void restartClock();
 
 private:
   int segmentSize_;
@@ -21,4 +22,6 @@ private:
   World world_;
   sf::RenderWindow renderWindow_;
   bool isDone_;
+  float elapsedTime_;  // time passed since the game starts
+  sf::Clock clock_;
 };

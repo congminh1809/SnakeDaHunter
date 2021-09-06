@@ -12,7 +12,6 @@ World::World(const int sz, const sf::Vector2u worldSize, Snake& snake)
   : segmentSize_{ sz }
   , worldSize_{ worldSize }
   , snake_{ snake }
-
 {
   // Initialize random generator
   srand(time(nullptr));
@@ -37,12 +36,10 @@ void World::update()
 {
   // DAY 3: implemented as follow
   auto snakePosition = snake_.body().front().position;
-  
   //   - check if the snake can eat the apple
   if ( snakePosition == apple_.position ) {
     // TODO: extend the snake's body by 1
     snake_.grow();
-    //score = score + body_.size();
     ++score;
     std::cout << "Score: " << score << std::endl;
     // create another apple
@@ -92,12 +89,11 @@ void World::createApple()
   // and it must not be on the snake body :)
   while ( isOnSnake(pos, snake_.body()) ) {
     pos = { rand() % (worldSize_.x - 2) + 1, rand() % (worldSize_.y - 2) + 1 };
-    //std::cout << "Ver: " << pos.x << "    " << "Hor: " << pos.y;
   }
 
   apple_.shape.setPosition(pos.x * segmentSize_, pos.y * segmentSize_);
   apple_.position = pos;
-  std::cout << "Ver: " << pos.x *segmentSize_ << "    " << "Hor: " << pos.y * segmentSize_ << std::endl;
+  std::cout << "Horizontal: " << pos.x * segmentSize_ << "    " << "Vertical: " << pos.y * segmentSize_ << std::endl;
 }
 
 void World::initializeWalls()

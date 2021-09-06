@@ -7,7 +7,7 @@ const int SEGMENTS_Y{ 30 };
 const int SNAKE_LIVES{ 3 };
 
 const std::string WINDOW_TITLE{ "Yet Another Snake Game" };
-const int MAX_FPS{ 20 };
+const int MAX_FPS{ 60 };
 
 /** Constructor: create world, snake and a render window.
  */
@@ -25,6 +25,8 @@ Game::Game()
   // After each sf::RenderWindow::display() call, the program will sleep a bit
   // to ensure the current frame last long enough to match the framerate limit.
   renderWindow_.setFramerateLimit(MAX_FPS);
+
+  elapsedTime_ = 0;
 }
 
 /** Destructor: close the render window
@@ -73,12 +75,18 @@ void Game::checkInput()
  */
 void Game::update()
 {
-  snake_.update();
-  world_.update();
+  float timeOfUpdate = 1.0 / snake_.speed();
 
-  if ( snake_.isDead() ) {
-    isDone_ = true;
-    std::cout << "GAME OVER!\n";
+  if ( elapsedTime_ > timeOfUpdate ) {
+    snake_.update();
+    world_.update();
+
+    if ( snake_.isDead() ) {
+      isDone_ = true;
+      std::cout << "GAME OVER!\n";
+    }
+
+    elapsedTime_ -= timeOfUpdate;
   }
 }
 
@@ -90,4 +98,9 @@ void Game::draw()
   world_.draw(renderWindow_);
 
   renderWindow_.display();
+}
+
+void Game::restartClock()
+{
+  elapsedTime_ += clock_.restart().asSeconds();
 }

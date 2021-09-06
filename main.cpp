@@ -9,6 +9,7 @@ int main()
     game.checkInput();
     game.update();
     game.draw();
+    game.restartClock();
   }
 
   return 0;
