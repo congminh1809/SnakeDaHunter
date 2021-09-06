@@ -120,13 +120,13 @@ void World::initializeWalls()
 }
 
 void World::text() {
-    //text_.setFont(font);
+    text_.setFont();
     text_.setString("Hello world");
     text_.setCharacterSize(24);
     text_.setFillColor(sf::Color(20, 179, 196, 255));
     text_.setStyle(sf::Text::Bold | sf::Text::Underlined);
-    //text_.setPosition(worldSize_.x * segmentSize_ - segmentSize_, worldSize_.y * segmentSize_ - segmentSize_);
-    text_.setPosition(400, 300);
+    text_.setPosition(worldSize_.x * segmentSize_ - segmentSize_, worldSize_.y * segmentSize_ - segmentSize_);
+    
 }
 
 

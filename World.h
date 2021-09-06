@@ -24,6 +24,7 @@ private:
     sf::CircleShape shape;
   } apple_;
   sf::RectangleShape walls_[4];
+  
   Snake& snake_;
 
   void initializeApple();
