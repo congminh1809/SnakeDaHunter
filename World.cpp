@@ -20,6 +20,7 @@ World::World(const int sz, const sf::Vector2u worldSize, Snake& snake)
 
   initializeApple();
   initializeWalls();
+  //text();
 }
 
 /** Draw the walls and the apple on the render window.
@@ -28,10 +29,9 @@ void World::draw(sf::RenderWindow& r)
 {
   for ( int i = 0; i < 4; ++i ) {
     r.draw(walls_[i]);
-    r.draw(text_);
   }
   r.draw(apple_.shape);
-  
+  r.draw(text_);
 }
 
 /** Update the state of world.
@@ -63,6 +63,7 @@ void World::initializeApple()
   apple_.shape.setRadius(segmentSize_ / 2.0);
 
   createApple();
+  
 }
 
 /** Check if a position is occupied by the snake body.
@@ -120,13 +121,16 @@ void World::initializeWalls()
 }
 
 void World::text() {
-    text_.setFont();
+    font_.loadFromFile("C:/Windows/Fonts/arial.ttf");
+    text_.setFont(font_);
     text_.setString("Hello world");
     text_.setCharacterSize(24);
-    text_.setFillColor(sf::Color(20, 179, 196, 255));
+    text_.setFillColor(sf::Color::White);
     text_.setStyle(sf::Text::Bold | sf::Text::Underlined);
-    text_.setPosition(worldSize_.x * segmentSize_ - segmentSize_, worldSize_.y * segmentSize_ - segmentSize_);
+    /*text_.setPosition(worldSize_.x * segmentSize_ - segmentSize_, worldSize_.y * segmentSize_ - segmentSize_);*/
+    text_.setPosition(0, 0);
     
+
 }
 
 

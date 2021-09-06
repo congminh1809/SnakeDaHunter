@@ -17,6 +17,7 @@ private:
   int segmentSize_;
   sf::Vector2i worldSize_;
   sf::Text text_;
+  sf::Font font_;
 
   struct Apple
   {
