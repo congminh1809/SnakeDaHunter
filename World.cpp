@@ -57,7 +57,7 @@ void World::update()
     score_.setFillColor(sf::Color(0, 179, 255, 255));
     score_.setStyle(sf::Text::Bold);
     score_.setPosition(220, 0);
-    //std::cout << "Score: " << score << std::endl;
+    std::cout << "Score: " << score << std::endl;
 
     // create another apple
     createApple();
@@ -134,6 +134,8 @@ void World::initializeWalls()
 }
 
 void World::setUpText() {
+    update();
+
     font_.loadFromFile("C:/Windows/Fonts/arial.ttf");
     text_.setFont(font_);
     text_.setString("Snake Da Hunter     Score:           Live:           Length: ");
