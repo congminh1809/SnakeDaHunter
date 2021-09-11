@@ -136,7 +136,7 @@ void World::initializeWalls()
 void World::setUpText() {
     font_.loadFromFile("C:/Windows/Fonts/arial.ttf");
     text_.setFont(font_);
-    text_.setString("Snake Da Hunter     Score:      Live:      Length: ");
+    text_.setString("Snake Da Hunter     Score:           Live:           Length: ");
     text_.setCharacterSize(16);
     text_.setFillColor(sf::Color(0, 179, 255, 255));
     text_.setStyle(sf::Text::Bold);
