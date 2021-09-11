@@ -15,8 +15,6 @@ Snake::Snake(const int segmentSize, const int lives)
 void Snake::draw(sf::RenderWindow& r)
 {
   if ( body_.empty() ) return;
-  r.draw(live_);
-  r.draw(length_);
   // draw the head
   bodySegment_.setFillColor(sf::Color::Yellow);
   bodySegment_.setPosition(body_[0].position.x * segmentSize_, body_[0].position.y * segmentSize_);
@@ -28,7 +26,8 @@ void Snake::draw(sf::RenderWindow& r)
     bodySegment_.setPosition(it->position.x * segmentSize_, it->position.y * segmentSize_);
     r.draw(bodySegment_);
   }
-  
+  r.draw(live_);
+  r.draw(length_);
 }
 
 /** Update the state of the snake.
@@ -68,9 +67,9 @@ void Snake::grow()
 			body_.emplace_back(tail1.position.x - 1, tail1.position.y);
 		}
 	}
-	int a = body_.size();
+
 	std::cout << "SIZE: " << body_.size() << std::endl;
-	std::string lengthString = std::to_string(a);
+	std::string lengthString = std::to_string(body_.size());
 	font_.loadFromFile("C:/Windows/Fonts/arial.ttf");
 	length_.setFont(font_);
 	length_.setString(lengthString);
