@@ -17,6 +17,8 @@ private:
   int segmentSize_;
   sf::Vector2i worldSize_;
   sf::Text text_;
+  sf::Text score_;
+  sf::Text live_;
   sf::Font font_;
 
   struct Apple
@@ -31,5 +33,5 @@ private:
   void initializeApple();
   void initializeWalls();
   void createApple();
-  void text();
+  void setUpText();
 };

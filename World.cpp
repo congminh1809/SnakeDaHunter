@@ -20,7 +20,7 @@ World::World(const int sz, const sf::Vector2u worldSize, Snake& snake)
 
   initializeApple();
   initializeWalls();
-  //text();
+  setUpText();
 }
 
 /** Draw the walls and the apple on the render window.
@@ -32,6 +32,8 @@ void World::draw(sf::RenderWindow& r)
   }
   r.draw(apple_.shape);
   r.draw(text_);
+  r.draw(score_);
+
 }
 
 /** Update the state of world.
@@ -44,8 +46,19 @@ void World::update()
   if ( snakePosition == apple_.position ) {
     // TODO: extend the snake's body by 1
     snake_.grow();
-    ++score;
-    std::cout << "Score: " << score << std::endl;
+    score++;
+
+    //Print score
+    std::string scoreString = std::to_string(score);
+    font_.loadFromFile("C:/Windows/Fonts/arial.ttf");
+    score_.setFont(font_);
+    score_.setString(scoreString);
+    score_.setCharacterSize(16);
+    score_.setFillColor(sf::Color(0, 179, 255, 255));
+    score_.setStyle(sf::Text::Bold);
+    score_.setPosition(220, 0);
+    //std::cout << "Score: " << score << std::endl;
+
     // create another apple
     createApple();
   }
@@ -120,16 +133,14 @@ void World::initializeWalls()
   }
 }
 
-void World::text() {
+void World::setUpText() {
     font_.loadFromFile("C:/Windows/Fonts/arial.ttf");
     text_.setFont(font_);
-    text_.setString("Hello world");
-    text_.setCharacterSize(24);
-    text_.setFillColor(sf::Color::White);
-    text_.setStyle(sf::Text::Bold | sf::Text::Underlined);
-    /*text_.setPosition(worldSize_.x * segmentSize_ - segmentSize_, worldSize_.y * segmentSize_ - segmentSize_);*/
+    text_.setString("Snake Da Hunter     Score:      Live:      Length: ");
+    text_.setCharacterSize(16);
+    text_.setFillColor(sf::Color(0, 179, 255, 255));
+    text_.setStyle(sf::Text::Bold);
     text_.setPosition(0, 0);
-    
 
 }
 

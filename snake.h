@@ -42,6 +42,9 @@ public:
   void grow();
 
 private:
+  sf::Text live_;
+  sf::Text length_;
+  sf::Font font_;
   SnakeBody body_;
   int segmentSize_;
   sf::RectangleShape bodySegment_;  // shape used in rendering
