@@ -41,7 +41,7 @@ void World::update()
   if ( snakePosition == apple_.position ) {
     // extend the snake's body by 1 segment
     snake_.grow();
-    score += snake_.body().size() * (nApplesCreated_);
+    score_ += snake_.body().size() * (nApplesCreated_);
     //std::cout << "SCORE:   " << score << std::endl;
 
     // create another apple
@@ -122,8 +122,8 @@ void World::initializeWalls()
   }
 }
 
-int World::numberOfApplesCreated() 
+int World::score()
 {
     
-    return score; 
+    return score_; 
 }

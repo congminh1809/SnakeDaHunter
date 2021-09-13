@@ -1,4 +1,8 @@
-﻿  world.cpp
+﻿  game.cpp
+D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\game.cpp(83,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\game.cpp(123,39): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  main.cpp
+  world.cpp
 D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\world.cpp(18,13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
 D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\world.cpp(64,39): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
 D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\world.cpp(99,56): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
@@ -33,4 +37,5 @@ D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\world.cpp(120,55): warning C42
           [
               T=float
           ]
+  Generating Code...
   SnakeDaHunter.vcxproj -> D:\Học\Thực tập\SnakeDaHunter\Debug\SnakeDaHunter.exe

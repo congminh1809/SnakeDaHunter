@@ -11,11 +11,11 @@ public:
 
   void draw(sf::RenderWindow&);
   void update();
-  int numberOfApplesCreated();
+  int score();
 
 private:
   int segmentSize_;
-  long int score = 0;
+  long int score_ = 0;
   sf::Vector2i worldSize_;
   Snake& snake_;
   struct Apple
