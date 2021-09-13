@@ -134,7 +134,6 @@ void World::initializeWalls()
 }
 
 void World::setUpText() {
-    update();
 
     font_.loadFromFile("C:/Windows/Fonts/arial.ttf");
     text_.setFont(font_);
