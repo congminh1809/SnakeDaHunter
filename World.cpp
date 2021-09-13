@@ -2,8 +2,6 @@
 #include "snake.h"
 #include <iostream>
 
-using namespace sf;
-
 /** Construct a world containing walls and an apple.
  *
  * The world is a grid of segments and has 4 walls on the boundary and an apple
@@ -14,13 +12,13 @@ World::World(const int sz, const sf::Vector2u worldSize, Snake& snake)
   : segmentSize_{ sz }
   , worldSize_{ worldSize }
   , snake_{ snake }
+  , nApplesCreated_{ 0 }
 {
   // Initialize random generator
   srand(time(nullptr));
 
   initializeApple();
   initializeWalls();
-  setUpText();
 }
 
 /** Draw the walls and the apple on the render window.
@@ -31,9 +29,6 @@ void World::draw(sf::RenderWindow& r)
     r.draw(walls_[i]);
   }
   r.draw(apple_.shape);
-  r.draw(text_);
-  r.draw(score_);
-
 }
 
 /** Update the state of world.
@@ -44,23 +39,16 @@ void World::update()
   auto snakePosition = snake_.body().front().position;
   //   - check if the snake can eat the apple
   if ( snakePosition == apple_.position ) {
-    // TODO: extend the snake's body by 1
+    // extend the snake's body by 1 segment
     snake_.grow();
-    score++;
-
-    //Print score
-    std::string scoreString = std::to_string(score);
-    font_.loadFromFile("C:/Windows/Fonts/arial.ttf");
-    score_.setFont(font_);
-    score_.setString(scoreString);
-    score_.setCharacterSize(16);
-    score_.setFillColor(sf::Color(0, 179, 255, 255));
-    score_.setStyle(sf::Text::Bold);
-    score_.setPosition(220, 0);
-    std::cout << "Score: " << score << std::endl;
+    score += snake_.body().size() * (nApplesCreated_);
+    //std::cout << "SCORE:   " << score << std::endl;
 
     // create another apple
     createApple();
+
+    // Increase snake's speed by 1 after eating every 10 apples
+    if ( nApplesCreated_ % 10 == 1 ) { snake_.speed(snake_.speed() + 1); }
   }
 
   //   - check if the snake collides with the walls
@@ -76,7 +64,6 @@ void World::initializeApple()
   apple_.shape.setRadius(segmentSize_ / 2.0);
 
   createApple();
-  
 }
 
 /** Check if a position is occupied by the snake body.
@@ -112,6 +99,8 @@ void World::createApple()
   apple_.shape.setPosition(pos.x * segmentSize_, pos.y * segmentSize_);
   apple_.position = pos;
   std::cout << "Horizontal: " << pos.x * segmentSize_ << "    " << "Vertical: " << pos.y * segmentSize_ << std::endl;
+
+  ++nApplesCreated_;
 }
 
 void World::initializeWalls()
@@ -133,16 +122,8 @@ void World::initializeWalls()
   }
 }
 
-void World::setUpText() {
-
-    font_.loadFromFile("C:/Windows/Fonts/arial.ttf");
-    text_.setFont(font_);
-    text_.setString("Snake Da Hunter     Score:           Live:           Length: ");
-    text_.setCharacterSize(16);
-    text_.setFillColor(sf::Color(0, 179, 255, 255));
-    text_.setStyle(sf::Text::Bold);
-    text_.setPosition(0, 0);
-
+int World::numberOfApplesCreated() 
+{
+    
+    return score; 
 }
-
-

@@ -1,10 +1,8 @@
-#include <iostream>
 #include "snake.h"
-#include "world.h"
 
-Snake::Snake(const int segmentSize, const int lives)
+Snake::Snake(const int segmentSize, const int lives, const int speed)
   : segmentSize_{ segmentSize }
-  , speed_{ 20 }
+  , speed_{ speed }
   , lives_{ lives }
   , isDead_{ false }
 {
@@ -15,6 +13,7 @@ Snake::Snake(const int segmentSize, const int lives)
 void Snake::draw(sf::RenderWindow& r)
 {
   if ( body_.empty() ) return;
+
   // draw the head
   bodySegment_.setFillColor(sf::Color::Yellow);
   bodySegment_.setPosition(body_[0].position.x * segmentSize_, body_[0].position.y * segmentSize_);
@@ -26,8 +25,6 @@ void Snake::draw(sf::RenderWindow& r)
     bodySegment_.setPosition(it->position.x * segmentSize_, it->position.y * segmentSize_);
     r.draw(bodySegment_);
   }
-  r.draw(live_);
-  r.draw(length_);
 }
 
 /** Update the state of the snake.
@@ -37,7 +34,7 @@ void Snake::update()
   if ( body_.empty() || dir_ == Direction::None ) return;
 
   move();
-  
+
   checkHeadCollidesWithBody();
 }
 
@@ -45,60 +42,46 @@ void Snake::update()
  */
 void Snake::grow()
 {
-	if (body_.size() < 2) return;
+  if ( body_.size() < 2 ) return;
 
-	const auto& tail1 = body_.at(body_.size() - 1);
-	const auto& tail2 = body_.at(body_.size() - 2);
+  const auto& tail1 = body_.at(body_.size() - 1);
+  const auto& tail2 = body_.at(body_.size() - 2);
 
-	if (tail1.position.x == tail2.position.x) {
-
-		if (tail1.position.y > tail2.position.y) {
-			body_.emplace_back(tail1.position.x, tail1.position.y + 1);
-		}
-		else {
-			body_.emplace_back(tail1.position.x, tail1.position.y - 1);
-		}
-	}
-	else if (tail1.position.y == tail2.position.y) {
-		if (tail1.position.x > tail2.position.x) {
-			body_.emplace_back(tail1.position.x + 1, tail1.position.y);
-		}
-		else {
-			body_.emplace_back(tail1.position.x - 1, tail1.position.y);
-		}
-	}
-
-	std::cout << "SIZE: " << body_.size() << std::endl;
-	std::string lengthString = std::to_string(body_.size());
-	font_.loadFromFile("C:/Windows/Fonts/arial.ttf");
-	length_.setFont(font_);
-	length_.setString(lengthString);
-	length_.setCharacterSize(16);
-	length_.setFillColor(sf::Color(0, 179, 255, 255));
-	length_.setStyle(sf::Text::Bold);
-	length_.setPosition(420, 0);
+  if ( tail1.position.x == tail2.position.x ) {
+    if ( tail1.position.y > tail2.position.y ) {
+      body_.emplace_back(tail1.position.x, tail1.position.y + 1);
+    } else {
+      body_.emplace_back(tail1.position.x, tail1.position.y - 1);
+    }
+  } else if ( tail1.position.y == tail2.position.y ) {
+    if ( tail1.position.x > tail2.position.x ) {
+      body_.emplace_back(tail1.position.x + 1, tail1.position.y);
+    } else {
+      body_.emplace_back(tail1.position.x - 1, tail1.position.y);
+    }
+  }
 }
 
 void Snake::initialize()
 {
-  body_.clear();
-  body_.emplace_back(5, 21);
-  body_.emplace_back(5, 20);
-  body_.emplace_back(5, 19);
-  body_.emplace_back(5, 18);
-  body_.emplace_back(5, 17);
-  body_.emplace_back(5, 16);
-  body_.emplace_back(5, 15);
-  body_.emplace_back(5, 14);
-  body_.emplace_back(5, 13);
-  body_.emplace_back(5, 12);
-  body_.emplace_back(5, 11);
-  body_.emplace_back(5, 10);
-  body_.emplace_back(5, 9);
-  body_.emplace_back(5, 8);
-  body_.emplace_back(5, 7);
-  body_.emplace_back(5, 6);
-  body_.emplace_back(5, 5);
+	body_.clear();
+    body_.emplace_back(5, 21);
+    body_.emplace_back(5, 20);
+    body_.emplace_back(5, 19);
+    body_.emplace_back(5, 18);
+    body_.emplace_back(5, 17);
+    body_.emplace_back(5, 16);
+    body_.emplace_back(5, 15);
+    body_.emplace_back(5, 14);
+    body_.emplace_back(5, 13);
+    body_.emplace_back(5, 12);
+    body_.emplace_back(5, 11);
+    body_.emplace_back(5, 10);
+    body_.emplace_back(5, 9);
+    body_.emplace_back(5, 8);
+    body_.emplace_back(5, 7);
+    body_.emplace_back(5, 6);
+    body_.emplace_back(5, 5);
 
   dir_ = Direction::None;
 }
@@ -130,37 +113,24 @@ void Snake::move()
  */
 void Snake::checkHeadCollidesWithBody()
 {
-	if (body_.size() < 6) return;
+  if ( body_.size() < 6 ) return;
 
-	for (auto it = body_.begin() + 1; it != body_.end(); ++it) {
+  for ( auto it = body_.begin() + 1; it != body_.end(); ++it ) {
+    if ( body_[0].position == it->position ) {
+      --lives_;
+      // TODO: cut the body from the touch point to the end
+      body_.erase(it, body_.end());
+      break;
+    }
+  }
+  if ( lives_ == 0 ) isDead_ = true;
 
-		if (body_[0].position == it->position) {
-			--lives_;
+  // another way to implement using std::find_if
+  // auto it = std::find_if(body_.begin() + 1, body_.end(), [&](const SnakeSegment& c) {
+  //   return body_[0].position == c.position;
+  // });
 
-            //Print Live
-            std::string liveString = std::to_string(lives_);
-            font_.loadFromFile("C:/Windows/Fonts/arial.ttf");
-            live_.setFont(font_);
-            live_.setString(liveString);
-            live_.setCharacterSize(16);
-            live_.setFillColor(sf::Color::White);
-            live_.setStyle(sf::Text::Bold);
-            live_.setPosition(320, 0);
-
-			std::cout << "LIVES:" << lives_ << std::endl;
-			// TODO: cut the body from the touch point to the end
-			body_.erase(it, body_.end());
-			break;
-		}
-	}
-	if (lives_ == 0) isDead_ = true;
-
-	// another way to implement using std::find_if
-	// auto it = std::find_if(body_.begin() + 1, body_.end(), [&](const SnakeSegment& c) {
-	//   return body_[0].position == c.position;
-	// });
-
-	// if ( it != body_.end() ) {
-	//   if ( --lives_ == 0 ) isDead_ = true;
-	// }
+  // if ( it != body_.end() ) {
+  //   if ( --lives_ == 0 ) isDead_ = true;
+  // }
 }

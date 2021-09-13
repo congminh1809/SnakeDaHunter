@@ -1,19 +1,22 @@
 #include "game.h"
+#include <iomanip>
 #include <iostream>
+#include <sstream>
 
 const int SEGMENT_SIZE{ 20 };
 const int SEGMENTS_X{ 40 };
 const int SEGMENTS_Y{ 30 };
 const int SNAKE_LIVES{ 3 };
+const int SNAKE_SPEED{ 20 };
 
-const std::string WINDOW_TITLE{ "Snake da Hunter" };
-const int MAX_FPS{ 60 };
+const std::string WINDOW_TITLE{ "Yet Another Snake Game" };
+const int MAX_FPS{ 120 };
 
 /** Constructor: create world, snake and a render window.
  */
 Game::Game()
   : segmentSize_{ SEGMENT_SIZE }
-  , snake_(segmentSize_, SNAKE_LIVES)
+  , snake_(segmentSize_, SNAKE_LIVES, SNAKE_SPEED)
   , world_(segmentSize_, sf::Vector2u{ SEGMENTS_X, SEGMENTS_Y }, snake_)
   , isDone_{ false }
 {
@@ -27,6 +30,8 @@ Game::Game()
   renderWindow_.setFramerateLimit(MAX_FPS);
 
   elapsedTime_ = 0;
+
+  initializeStatusBar();
 }
 
 /** Destructor: close the render window
@@ -81,6 +86,8 @@ void Game::update()
     snake_.update();
     world_.update();
 
+    updateStatusBar();
+
     if ( snake_.isDead() ) {
       isDone_ = true;
       std::cout << "GAME OVER!\n";
@@ -97,10 +104,33 @@ void Game::draw()
   snake_.draw(renderWindow_);
   world_.draw(renderWindow_);
 
+  renderWindow_.draw(statusBar_);
+
   renderWindow_.display();
 }
 
 void Game::restartClock()
 {
   elapsedTime_ += clock_.restart().asSeconds();
+}
+
+void Game::initializeStatusBar()
+{
+  font_.loadFromFile("C:\\Windows\\Fonts\\arial.ttf");
+  statusBar_.setFont(font_);
+  statusBar_.setCharacterSize(segmentSize_ - 4);
+  statusBar_.setFillColor(sf::Color(0, 255, 170, 255));
+  statusBar_.setPosition(segmentSize_ + 2, (SEGMENTS_Y - 1) * SEGMENT_SIZE - 1);
+  statusBar_.setStyle(sf::Text::Bold);
+}
+
+void Game::updateStatusBar()
+{
+  std::ostringstream oss;
+  /*score += snake_.body().size() * (world_.numberOfApplesCreated() - 1);*/
+  oss << "Lives: " << snake_.lives() << "  Body: " << std::setw(3) << snake_.body().size()
+      << "  Speed: " << std::setw(2) << snake_.speed() << "  Score: " << std::setw(3)
+      << world_.numberOfApplesCreated() << "           Pause [SPACE]  Main Menu [ESC]";
+  statusBar_.setString(oss.str().c_str());
+  
 }

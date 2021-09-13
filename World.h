@@ -11,27 +11,22 @@ public:
 
   void draw(sf::RenderWindow&);
   void update();
-  int score = 0;
+  int numberOfApplesCreated();
 
 private:
   int segmentSize_;
+  long int score = 0;
   sf::Vector2i worldSize_;
-  sf::Text text_;
-  sf::Text score_;
-  sf::Text live_;
-  sf::Font font_;
-
+  Snake& snake_;
   struct Apple
   {
     sf::Vector2i position;
     sf::CircleShape shape;
   } apple_;
   sf::RectangleShape walls_[4];
-  
-  Snake& snake_;
+  int nApplesCreated_;  // hold the number of apples created so far
 
   void initializeApple();
   void initializeWalls();
   void createApple();
-  void setUpText();
 };
