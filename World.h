@@ -23,7 +23,7 @@ private:
     sf::Vector2i position;
     sf::Sprite shape;
   } apple_;
-  sf::Texture texture;
+  sf::Texture texture_;
   
   sf::RectangleShape walls_[4];
   int nApplesCreated_;  // hold the number of apples created so far

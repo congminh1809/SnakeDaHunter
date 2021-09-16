@@ -125,7 +125,7 @@ void Game::initializeStatusBar()
   statusBar_.setStyle(sf::Text::Bold);
 
   title_.setFont(font_);
-  title_.setString("Minh PC's Snake Da Hunter (Instagram version) ");
+  title_.setString("Snake Da Hunter by Minh PC ");
   title_.setCharacterSize(segmentSize_ - 6);
   title_.setFillColor(sf::Color(0, 255, 170, 255));
   title_.setPosition(0,0);

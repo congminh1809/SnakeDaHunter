@@ -60,11 +60,11 @@ void World::update()
 
 void World::initializeApple()
 {
-	texture.loadFromFile("D:/DwnlData/insta.png");
-	apple_.shape.setScale((float)segmentSize_ / texture.getSize().y, (float)segmentSize_ / texture.getSize().y);
-	texture.setSmooth(true);
-	texture.setRepeated(true);
-	apple_.shape.setTexture(texture);
+	texture_.loadFromFile("D:/DwnlData/insta.png");
+	apple_.shape.setScale((float)segmentSize_ / texture_.getSize().y, (float)segmentSize_ / texture_.getSize().y);
+	texture_.setSmooth(true);
+	texture_.setRepeated(true);
+	apple_.shape.setTexture(texture_);
 	
 
 	//apple_.shape.setRadius(segmentSize_ / 2.0);

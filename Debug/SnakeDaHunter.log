@@ -1,4 +1,16 @@
-﻿  game.cpp
-D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\game.cpp(83,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\game.cpp(124,39): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+﻿  snake.cpp
+D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\snake.cpp(9,67): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\snake.cpp(9,49): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\snake.cpp(17,83): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\snake.cpp(17,47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\snake.cpp(23,74): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\snake.cpp(23,43): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   SnakeDaHunter.vcxproj -> D:\Học\Thực tập\SnakeDaHunter\Debug\SnakeDaHunter.exe
