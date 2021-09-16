@@ -3,9 +3,9 @@
 #include <iostream>
 #include <sstream>
 
-const int SEGMENT_SIZE{ 20 };
+const int SEGMENT_SIZE{ 30 };
 const int SEGMENTS_X{ 40 };
-const int SEGMENTS_Y{ 30 };
+const int SEGMENTS_Y{ 40 };
 const int SNAKE_LIVES{ 3 };
 const int SNAKE_SPEED{ 20 };
 
@@ -105,6 +105,7 @@ void Game::draw()
   world_.draw(renderWindow_);
 
   renderWindow_.draw(statusBar_);
+  renderWindow_.draw(title_);
 
   renderWindow_.display();
 }
@@ -122,6 +123,13 @@ void Game::initializeStatusBar()
   statusBar_.setFillColor(sf::Color(0, 255, 170, 255));
   statusBar_.setPosition(segmentSize_ + 2, (SEGMENTS_Y - 1) * SEGMENT_SIZE - 1);
   statusBar_.setStyle(sf::Text::Bold);
+
+  title_.setFont(font_);
+  title_.setString("Minh PC's Snake Da Hunter (Instagram version) ");
+  title_.setCharacterSize(segmentSize_ - 6);
+  title_.setFillColor(sf::Color(0, 255, 170, 255));
+  title_.setPosition(0,0);
+  title_.setStyle(sf::Text::Bold);
 }
 
 void Game::updateStatusBar()

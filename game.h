@@ -27,6 +27,7 @@ private:
   sf::Clock clock_;
 
   sf::Text statusBar_;
+  sf::Text title_;
   sf::Font font_;
 
   void initializeStatusBar();

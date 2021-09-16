@@ -21,8 +21,10 @@ private:
   struct Apple
   {
     sf::Vector2i position;
-    sf::CircleShape shape;
+    sf::Sprite shape;
   } apple_;
+  sf::Texture texture;
+  
   sf::RectangleShape walls_[4];
   int nApplesCreated_;  // hold the number of apples created so far
 
