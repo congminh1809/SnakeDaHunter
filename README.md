@@ -1,2 +1,2 @@
-# YetAnotherSnakeGame
-Yet Another Snake Game using SFML
+# Snake Da Hunter Game
+Snake Da Hunter Game using SFML
