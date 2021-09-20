@@ -1,16 +1,35 @@
-﻿  snake.cpp
-D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\snake.cpp(9,67): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+﻿  world.cpp
+D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\world.cpp(18,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\world.cpp(105,55): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\world.cpp(105,33): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\world.cpp(117,64): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\snake.cpp(9,49): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\world.cpp(117,48): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\snake.cpp(17,83): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\snake.cpp(17,47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\snake.cpp(23,74): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\snake.cpp(23,43): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\world.cpp(120,62): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\world.cpp(120,35): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\world.cpp(128,81): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\Học\Thực tập\SnakeDaHunter\SnakeDaHunter\world.cpp(128,52): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
   SnakeDaHunter.vcxproj -> D:\Học\Thực tập\SnakeDaHunter\Debug\SnakeDaHunter.exe

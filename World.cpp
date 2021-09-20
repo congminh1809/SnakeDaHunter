@@ -42,7 +42,7 @@ void World::update()
 		// extend the snake's body by 1 segment
 		snake_.grow();
 		score_ += snake_.body().size() * (nApplesCreated_);
-		//std::cout << "SCORE:   " << score << std::endl;
+		std::cout << "SCORE:   " << score_ << std::endl;
 
 		// create another apple
 		createApple();
@@ -60,7 +60,7 @@ void World::update()
 
 void World::initializeApple()
 {
-	texture_.loadFromFile("D:/DwnlData/insta.png");
+	texture_.loadFromFile("D:/DwnlData/apple1.png");
 	apple_.shape.setScale((float)segmentSize_ / texture_.getSize().y, (float)segmentSize_ / texture_.getSize().y);
 	texture_.setSmooth(true);
 	texture_.setRepeated(true);
@@ -132,7 +132,7 @@ void World::initializeWalls()
 
 int World::score()
 {
-
+	//std::cout << "SCORE:   " << score_ << std::endl;
 	return score_;
 }
 
