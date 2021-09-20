@@ -58,6 +58,7 @@ void World::update()
 	}
 }
 
+
 void World::initializeApple()
 {
 	texture_.loadFromFile("D:/DwnlData/apple1.png");
