@@ -47,8 +47,14 @@ void World::update()
 		// create another apple
 		createApple();
 
-		// Increase snake's speed by 1 after eating every 10 apples
-		if (nApplesCreated_ % 10 == 1) { snake_.speed(snake_.speed() + 1); }
+		// Increase snake's speed by 1 after eating every 5 apples when score is low and 2 apple when score is high
+		if (nApplesCreated_ > 10)
+		{
+			if (nApplesCreated_ % 2 == 1) { snake_.speed(snake_.speed() + 1); }
+		}
+		else {
+			if (nApplesCreated_ % 5 == 1) { snake_.speed(snake_.speed() + 1); }
+		}
 	}
 
 	//   - check if the snake collides with the walls
@@ -66,7 +72,7 @@ void World::initializeApple()
 	texture_.setSmooth(true);
 	texture_.setRepeated(true);
 	apple_.shape.setTexture(texture_);
-	
+
 
 	//apple_.shape.setRadius(segmentSize_ / 2.0);
 

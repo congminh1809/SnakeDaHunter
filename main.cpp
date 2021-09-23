@@ -2,15 +2,15 @@
 
 int main()
 {
-  Game game;
+	Game game;
 
-  while ( !game.isDone() ) {
-    game.checkEvents();
-    game.checkInput();
-    game.update();
-    game.draw();
-    game.restartClock();
-  }
+	while (!game.isDone()) {
+		game.checkEvents();
+		game.checkInput();
+		game.update();
+		game.draw();
+		game.restartClock();
+	}
 
-  return 0;
+	return 0;
 }

@@ -6,30 +6,30 @@
 class Game
 {
 public:
-  Game();
-  ~Game();
+	Game();
+	~Game();
 
-  void checkEvents();
-  void checkInput();
-  void update();
-  void draw();
-  bool isDone() const { return isDone_; }
-  void restartClock();
+	void checkEvents();
+	void checkInput();
+	void update();
+	void draw();
+	bool isDone() const { return isDone_; }
+	void restartClock();
 
 private:
-  int segmentSize_;
-  
-  Snake snake_;
-  World world_;
-  sf::RenderWindow renderWindow_;
-  bool isDone_;
-  float elapsedTime_;  // time passed since the game starts
-  sf::Clock clock_;
+	int segmentSize_;
 
-  sf::Text statusBar_;
-  sf::Text title_;
-  sf::Font font_;
+	Snake snake_;
+	World world_;
+	sf::RenderWindow renderWindow_;
+	bool isDone_;
+	float elapsedTime_;  // time passed since the game starts
+	sf::Clock clock_;
 
-  void initializeStatusBar();
-  void updateStatusBar();
+	sf::Text statusBar_;
+	sf::Text title_;
+	sf::Font font_;
+
+	void initializeStatusBar();
+	void updateStatusBar();
 };

@@ -4,56 +4,56 @@
 
 struct SnakeSegment
 {
-  SnakeSegment(const int x, const int y)
-    : position{ x, y }
-  {}
+	SnakeSegment(const int x, const int y)
+		: position{ x, y }
+	{}
 
-  sf::Vector2i position;
+	sf::Vector2i position;
 };
 
 using SnakeBody = std::vector<SnakeSegment>;
 
 enum class Direction
 {
-  None,   // no movement
-  Up,     // moving up
-  Right,  // moving right
-  Down,   // moving down
-  Left    // moving left
+	None,   // no movement
+	Up,     // moving up
+	Right,  // moving right
+	Down,   // moving down
+	Left    // moving left
 };
 
 class Snake
 {
 public:
-  Snake(const int segmentSize, const int lives, const int speed);
+	Snake(const int segmentSize, const int lives, const int speed);
 
-  void draw(sf::RenderWindow&);
-  void update();
+	void draw(sf::RenderWindow&);
+	void update();
 
-  Direction direction() const { return dir_; }
-  void direction(const Direction d) { dir_ = d; }
-  const SnakeBody& body() const { return body_; }
+	Direction direction() const { return dir_; }
+	void direction(const Direction d) { dir_ = d; }
+	const SnakeBody& body() const { return body_; }
 
-  bool isDead() const { return isDead_; }
-  void isDead(const bool d) { isDead_ = d; }
+	bool isDead() const { return isDead_; }
+	void isDead(const bool d) { isDead_ = d; }
 
-  int lives() const { return lives_; }
-  int speed() const { return speed_; }
-  void speed(const int s) { speed_ = s; }
+	int lives() const { return lives_; }
+	int speed() const { return speed_; }
+	void speed(const int s) { speed_ = s; }
 
-  void grow();
+	void grow();
 
 private:
-  SnakeBody body_;
-  int segmentSize_;
-  sf::RectangleShape bodySegment_;  // shape used in rendering
-  Direction dir_;
+	SnakeBody body_;
+	int segmentSize_;
+	sf::RectangleShape bodySegment_;  // shape used in rendering
+	Direction dir_;
 
-  int speed_;    // speed of updates
-  int lives_;    // hold lives of snake
-  bool isDead_;  // check if snake is alive
+	int speed_;    // speed of updates
+	int lives_;    // hold lives of snake
+	bool isDead_;  // check if snake is alive
 
-  void initialize();
-  void move();
-  void checkHeadCollidesWithBody();
+	void initialize();
+	void move();
+	void checkHeadCollidesWithBody();
 };
